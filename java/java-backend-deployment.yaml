@@ -1,0 +1,54 @@
+# java-backend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-backend
+  template:
+    metadata:
+      labels:
+        app: java-backend
+    spec:
+      containers:
+        - name: java-backend
+          image: alejandroqo/almacen-backend-java:2.5
+          ports:
+            - name: rabbitmq-port
+              containerPort: 5672
+            - name: mysql-port
+              containerPort: 3306
+          env:
+            - name: QUEUE_NAME
+              value: "hello"
+            - name: DB_HOST
+              value: 10.103.43.205
+            - name: DB_PORT
+              value: "3306"
+            - name: DB_NAME
+              value: almacen
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: database
+            - name: DB_USER
+              value: root
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: username
+            - name: DB_PASSWORD
+              value: test1234
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: password
+            
+            - name: RABBIT_HOST 
+              value: 10.105.153.140
+            - name: RABBIT_PORT
+              value: "5672"
+            

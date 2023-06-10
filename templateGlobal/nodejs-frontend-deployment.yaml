@@ -1,0 +1,26 @@
+# nodejs-frontend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-frontend
+  template:
+    metadata:
+      labels:
+        app: nodejs-frontend
+    spec:
+      containers:
+        - name: nodejs-frontend
+          image: <nodejs_frontend_image>
+          ports:
+            - containerPort: <nodejs_frontend_port>
+          env:
+            - name: RABBITMQ_HOST
+              value: <rabbitmq_host>
+            - name: RABBITMQ_PORT
+              value: <rabbitmq_port>
+

@@ -1,0 +1,47 @@
+docker run --name test-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw
+
+my-secret-pw
+
+CREATE DATABASE almacen;
+
+use almacen
+
+CREATE TABLE productos(
+   id          INTEGER  NOT NULL PRIMARY KEY 
+  ,producto    VARCHAR(10) NOT NULL
+  ,cantidad    INTEGER  NOT NULL
+  ,precio      NUMERIC(3,1) NOT NULL
+  ,image_url   VARCHAR(115) NOT NULL
+  ,descripcion VARCHAR(105) NOT NULL
+);
+
+
+
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (1512,'aceite',3,8.2,'https://wongfood.vtexassets.com/arquivos/ids/562541-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es un aceite de cocina de alta calidad.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (4526,'carne',3,9.8,'https://wongfood.vtexassets.com/arquivos/ids/562542-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es carne fresca y jugosa, ideal para preparar deliciosas comidas.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (7753,'pescado',2,6.4,'https://wongfood.vtexassets.com/arquivos/ids/562543-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es pescado fresco del mar, rico en omega-3 y perfecto para recetas saludables.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (2798,'zanahorias',6,1.1,'https://wongfood.vtexassets.com/arquivos/ids/562544-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son zanahorias frescas y crujientes, ideales para ensaladas y guisos.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (6185,'cebollas',4,0.7,'https://wongfood.vtexassets.com/arquivos/ids/562545-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son cebollas dulces y aromáticas, perfectas para dar sabor a tus platos favoritos.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (3621,'papas',7,0.8,'https://wongfood.vtexassets.com/arquivos/ids/562546-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son papas frescas y versátiles, ideales para preparar deliciosas guarniciones.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (9402,'tomates',5,1.5,'https://wongfood.vtexassets.com/arquivos/ids/562547-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son tomates jugosos y sabrosos, ideales para ensaladas y salsas caseras.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (1269,'lechuga',2,1.2,'https://wongfood.vtexassets.com/arquivos/ids/562548-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es lechuga fresca y crujiente, perfecta para ensaladas saludables.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (5703,'manzanas',8,2.3,'https://wongfood.vtexassets.com/arquivos/ids/562549-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son manzanas jugosas y dulces, ideales como merienda o para preparar postres.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (8532,'naranjas',9,2.1,'https://wongfood.vtexassets.com/arquivos/ids/562550-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son naranjas frescas y llenas de vitamina C, perfectas para hacer jugos naturales.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (7124,'plátanos',6,1.8,'https://wongfood.vtexassets.com/arquivos/ids/562551-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son plátanos maduros y llenos de energía, ideales como snack o para hacer postres.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (4136,'fresas',3,4.5,'https://wongfood.vtexassets.com/arquivos/ids/562552-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son fresas frescas y dulces, perfectas para disfrutar solas o en postres.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (9468,'uvas',4,3.7,'https://wongfood.vtexassets.com/arquivos/ids/562553-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son uvas jugosas y llenas de sabor, ideales como snack o para preparar ensaladas de frutas.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (3197,'sandía',1,5.6,'https://wongfood.vtexassets.com/arquivos/ids/562554-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es una sandía jugosa y refrescante, perfecta para disfrutar en días calurosos.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (6325,'pimentón',4,1.2,'https://wongfood.vtexassets.com/arquivos/ids/562555-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es pimentón fresco y colorido, ideal para dar sabor y color a tus platos favoritos.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (2785,'calabacín',3,0.9,'https://wongfood.vtexassets.com/arquivos/ids/562556-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es calabacín fresco y versátil, perfecto para preparar guisos y salteados.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (5721,'pepino',5,0.8,'https://wongfood.vtexassets.com/arquivos/ids/562557-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es pepino fresco y refrescante, ideal para ensaladas y aguas saborizadas.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (9174,'limones',7,1.6,'https://wongfood.vtexassets.com/arquivos/ids/562558-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto son limones ácidos y aromáticos, perfectos para aderezos y bebidas refrescantes.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (1042,'mango',4,3.2,'https://wongfood.vtexassets.com/arquivos/ids/562559-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es un mango maduro y dulce, ideal para disfrutar en postres o como snack.');
+INSERT INTO productos(id,producto,cantidad,precio,image_url,descripcion) VALUES (3547,'piña',3,2.9,'https://wongfood.vtexassets.com/arquivos/ids/562560-800-auto?v=637932589970800000&width=800&height=auto&aspect=true','Este producto es una piña jugosa y tropical, perfecta para preparar jugos y ensaladas de frutas.');
+
+
+
+java -jar build/libs/distributedSystem-1.0-SNAPSHOT.jar "hello" "localhost" "3306" "almacen" "root" "my-secret-pw"
+
+
+
+docker run -e QUEUE_NAME=python-java  -e DB_HOST=172.17.0.2  -e DB_PORT=3306 -e DB_NAME=almacen -e DB_USER=root -e DB_PASSWORD=my-secret-pw  -e RABBIT_HOST=10.10.0.135 -e RABBIT_PORT=5672 -p 5672:5672 --name test-java alejandroqo/almacen-backend-java:2.5

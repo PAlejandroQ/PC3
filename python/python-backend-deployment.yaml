@@ -1,0 +1,50 @@
+# python-backend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-backend
+  template:
+    metadata:
+      labels:
+        app: python-backend
+    spec:
+      containers:
+        - name: python-backend
+          image: josetello26/rabbit-python:2.0
+          ports:
+            - name: rabbitmq
+              containerPort: 5672
+            - name: postgres
+              containerPort: 5432
+          env:
+            - name: POSTGRES_HOST
+              value: postgres.default
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_USER
+              value: admin
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: username
+            - name: POSTGRES_PASSWORD
+              value: test123
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: password
+            - name: POSTGRES_DB
+              value: tienda
+              # valueFrom:
+              #   secretKeyRef:
+              #     name: postgres-credentials
+              #     key: database
+            - name: RABBITMQ_HOST 
+              value: production-rabbitmqcluster.default
+            - name: RABBITMQ_PORT
+              value: "5672"

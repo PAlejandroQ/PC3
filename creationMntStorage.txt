@@ -1,0 +1,17 @@
+sudo mkdir /mnt/data
+sudo chmod 777 /mnt/data
+
+
+## FIx IPs
+# add
+EnviromentFile=.... # the rest of the line
+Environment="KUBELET_EXTRA_ARGS=--node-ip=192.168.25.110"
+# in 
+sudo vim /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+# the restart services
+sudo systemctl daemon-reload
+sudo systemctl restart kubelet
+sudo kubectl get nodes -o wide
+
+# Salir de psql
+\q

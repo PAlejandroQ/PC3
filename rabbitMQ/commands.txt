@@ -1,0 +1,64 @@
+# install rabbitMQ operator
+kubectl apply -f https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml
+O TAMBIEN
+kubectl apply -f cluster-operator.yml
+# check components
+kubectl get all -o wide -n rabbitmq-system
+
+# rabbitMQ cluster(direct download is other way)
+git clone https://github.com/pavan-kumar-99/medium-manifests.git -b rabbitmq 
+cd medium-manifests/ # diferente nombre
+kubectl apply -f rabbitmqcluster.yaml 
+
+# Check resources
+kubectl describe RabbitmqCluster production-rabbitmqcluster 
+
+# Get username (check if is still only "guest")
+kubectl get secret production-rabbitmqcluster-default-user -o jsonpath='{.data.username}' | base64 --decode
+default_user_7G0xYvUOZp1NGfhCb_h
+
+# Get password (check if is still only "guest")
+kubectl get secret production-rabbitmqcluster-default-user -o jsonpath='{.data.password}' | base64 --decode
+u-z5j-NdqRseFzGzylsx34krWW0CZDXz
+
+# Check resources of rabbitMQ
+kubectl get all -l app.kubernetes.io/part-of=rabbitmq
+
+# Check GUI / remeber to use port:15672 (convertir a NodePort de preferenciaS)
+kubectl get svc production-rabbitmqcluster -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+
+# test rabbitMQ (URL referencial)http://192.168.29.166:15672 
+git clone https://github.com/pavan-kumar-99/medium-manifests.git -b rabbitmq
+$ cd medium-manifests/
+$ helm install send-service rabbitmq-helm/send-service --set configmap.rmq_url="amqp://guest:guest@192.168.29.165:5672/"
+
+# Acces to produce services
+
+kubectl get svc send-service-rabbitmq-helm -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+192.168.29.166 
+
+# Checks logs of the service send-service-rabbitmq
+<...>
+
+### Install who recive
+git clone https://github.com/pavan-kumar-99/medium-manifests.git -b rabbitmq
+
+$ cd medium-manifests/
+$ helm install receive-service rabbitmq-helm/receive-service --set configmap.rmq_url="amqp://guest:guest@192.168.29.165:5672/"
+
+# Check los of receive-service-rabbit
+<...>
+
+
+# Test system con bash
+
+$ git clone https://github.com/pavan-kumar-99/medium-manifests.git 
+-b rabbitmq
+$ cd medium-manifests/
+$ sh test_rmq.sh ( This will send 10 curl requests with the iterator as the message ). 
+
+
+
+
+
+

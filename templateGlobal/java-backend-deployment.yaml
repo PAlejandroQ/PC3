@@ -1,0 +1,27 @@
+# java-backend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-backend
+  template:
+    metadata:
+      labels:
+        app: java-backend
+    spec:
+      containers:
+        - name: java-backend
+          image: <java_backend_image>
+          ports:
+            - containerPort: <java_backend_port>
+          env:
+            - name: MYSQL_HOST
+              value: <mysql_host>
+            - name: MYSQL_PORT
+              value: <mysql_port>
+
+

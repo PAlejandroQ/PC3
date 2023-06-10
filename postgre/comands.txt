@@ -1,0 +1,15 @@
+kubectl apply -f postgres-configmap.yaml
+
+kubectl apply -f postgres-storage.yaml
+
+kubectl get pvc
+
+kubectl apply -f postgres-deployment.yaml
+
+kubectl apply -f postgres-service.yaml
+
+kubectl get all
+
+kubectl exec -it [pod-name] --  psql -h localhost -U admin --password -p [port] postgresdb
+## Version de test
+kubectl exec -it [pod-name] --  psql -h localhost -U admin --password -p 5432 postgresdb

@@ -1,0 +1,48 @@
+RECORDAR NO USAR SUDO SI NO ES NECESARIO EN EL CLUSTER
+# Install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+
+chmod 700 get_helm.sh # Porseaca ejecutar luego con "-R" para aplicar recursivamente
+
+./get_helm.sh
+
+# helm init (deprecated)
+# Add manually(OJO, si necesitas el sudo para ejecutar kubectl, tambien usa el sudo para helm, y tambien installa en usuario SUDO, o no encontrara el repo)
+helm repo add stable https://charts.helm.sh/stable
+helm repo update  
+
+# Remove permissions: (opctional by isses of sudo)
+chmod go-r ~/.kube/config
+########
+
+kubectl create namespace rabbit
+
+helm install mu-rabbit stable/rabbitmq --namespace rabbit
+
+# Check output for credentials, port, and URL
+
+sudo kubectl get deployments,pods,services --namespace rabbit
+
+# Si no se lanza, revisar los PV y PVC, crear los necesarios
+# usando las plantillas de mySQL o de postgres
+
+# Si hay problemas de permisos en el contenedor,
+# modificar en el pod o stafullset esto
+
+
+
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+      securityContext:
+        runAsUser: 0  # ejecutar contenedor como ROOT
+      volumeMounts:
+        - name: data
+          mountPath: /data
+
+# Recuerda que dependera de si es pod solo o esta bajo cuidado de algun scheduler
+
+# Enable GUI
+rabbitmq-plugins enable rabbitmq_management
+
